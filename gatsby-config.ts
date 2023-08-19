@@ -1,31 +1,42 @@
-import type { GatsbyConfig } from "gatsby"
+import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    siteUrl: `https://blog.nairolf32.com`,
     title: `Blog`,
-    description: `This is a muthafuckin' blog`,
-    author: `EDEMESSI Florian`
+    siteUrl: `https://blog.nairolf32.com`,
+    description: "A muthafuckin' blog",
+    author: "nairolf32",
   },
 
   graphqlTypegen: true,
-  plugins: [
-
-    {
-      resolve: `gatsby-plugin-mdx`,
+  plugins: ["gatsby-plugin-image", "gatsby-plugin-sitemap", {
+    resolve: 'gatsby-plugin-manifest',
+    options: {
+      "icon": "src/images/icon.png"
+    }
+  }, "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
+      resolve: 'gatsby-source-filesystem',
       options: {
-        extensions: [`.mdx`, `.md`],
+        "name": "images",
+        "path": "./src/images/"
       },
+      __key: "images"
+    }, {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "pages",
+        "path": "./src/pages/"
+      },
+      __key: "pages"
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts`,
+        "name": "posts",
+        "path": "./src/posts/"
       },
-    },
+      __key: "posts"
+    }]
+};
 
-  ],
-}
-
-export default config
+export default config;
