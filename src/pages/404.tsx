@@ -1,27 +1,19 @@
-import * as React from "react"
-import { Link, HeadFC, PageProps } from "gatsby"
-import {
-  pageStyles, headingStyles, codeStyles,
-  paragraphStyles } from "../components/styles"
+import * as React from "react";
+import { Link, HeadFC, PageProps } from "gatsby";
+import Layout from "../components/layout";
+import { headingStyle, paragraphStyle } from "../components/layout";
 
+//Custom 404
 const NotFoundPage: React.FC<PageProps> = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Yup, you are lost...
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
+    <Layout>
+      <h1 style={headingStyle}>Page not found</h1>
+      <p style={paragraphStyle}>
+        Yeah, you managed to get lost... <br/><br/>
+        It's all your fault and you should feel bad about it
+        <Link to="/">Go home, Now!</Link>.
       </p>
-    </main>
+    </Layout>
   )
 }
 
