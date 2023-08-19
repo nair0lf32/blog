@@ -1,59 +1,43 @@
-import * as React from "react"
-import { graphql, Link, PageProps } from "gatsby"
-import {
-  pageStyles, headingStyles, headingAccentStyles,
-  paragraphStyles } from "../components/styles"
+import { Link, graphql } from "gatsby"
+import React from "react"
+import Layout from "../components/layout"
 
-export const query = graphql
-`query siteIndex {
-  site {
-    siteMetadata {
-      title
-      description
-    }
-  }
-  allMdx(
-    sort: {frontmatter: {date: DESC}}
-    filter: {frontmatter: {published: {eq: true}}}
-  ) {
+
+export const allPostsQuery = graphql`
+query {
+  allMdx(sort: {frontmatter: {date: DESC}}) {
     nodes {
-      id
-      excerpt(pruneLength: 250)
       frontmatter {
         title
-        date
-      }
-      fields {
+        date(formatString: "MMMM D, YYYY")
         slug
       }
+      excerpt
     }
   }
 }
 `
-const PostPage = ({ data }: PageProps<Queries.siteIndexQuery>)  =>  {
-    return (
-        <main>
-        <div>
-            <h1>{data.site?.siteMetadata?.title}</h1>
-            <h2>{data.site?.siteMetadata?.description}</h2>
-        </div>
 
-            <div>
-            {data.allMdx?.nodes.map(({ excerpt, frontmatter }) => (
-                <div>
-            <Link to={fields.slug}>
-            <h2>
-                {frontmatter?.title}
-            ({frontmatter?.date})
-            </h2>
-            </Link> 
-                <p>{excerpt}</p>
-                </div>
-            ))}
-            
-        </div>
-        </main>
+const PostList = ({ data, children }: any) => {
+    return(
+        <Layout>
+            <ul>
+                {data.allMdx.nodes.map((node: any) => (
+                    <li key={node.slug}>
+                    <div>
+                    	<div>
+                        <Link to={node.slug}>
+                        <h2>{node.frontmatter.title}</h2>
+                        </Link>
+                        </div>
+                        <p>{node.frontmatter.date}</p>
+                        <p>{node.excerpt}</p>
+                    </div>
+                    </li>
+                ))}
+            </ul>
+        </Layout>
     )
-}
+    }
 
-export default PostPage
+export default PostList;
