@@ -1,48 +1,39 @@
-const { createFilePath } = require(`gatsby-source-filesystem`);
-const path = require("path");
+import type { GatsbyNode } from "gatsby";
 
+const path = require('path');
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-    const { createNodeField } = actions
-
-    if (node.internal.type === `Mdx`) {
-        const value = createFilePath({ node, getNode })
-
-        createNodeField({
-            name: `slug`,
-            node,
-            value: `/posts${value}`,
-        })
+export const createPages: GatsbyNode["createPages"] = async (
+    { graphql, actions, reporter }) => {
+    const { createPage } = actions;
+    const result = await graphql<any>(`
+query {
+  allMdx {
+    nodes {
+      body
+      excerpt(pruneLength: 150)
+      frontmatter {
+        slug
+      }
+      id
+      internal {
+        contentFilePath
+      }
     }
+  }
 }
-
-
-exports.createPages = async ({ graphql, actions, reporter }) => {
-    const { createPage } = actions
-    const result = await graphql
-        (`query {
-        allMdx { 
-            edges {
-                node {
-                    id
-                    fields {
-                        slug
-                    }
-                }
-            }
-        }
-    }
-    `)
+        `);
     if (result.errors) {
-        reporter.panicOnBuild("Error: Could not query createPages")
+        reporter.panicOnBuild('Failed to create posts: ', result.errors);
     }
-    const posts = result.data.allMdx.edges
-    posts.forEach(({ node }, index) => {
+
+    const posts = result.data.allMdx.nodes;
+
+    posts.forEach((node: any) => {
         createPage({
-            path: node.fields.slug,
-            component: path.resolve(`./src/components/post-template.tsx`),
-            context: { id: node.id },
+            path: `/posts/${node.frontmatter.slug}`,
+            component: path.resolve(`./src/templates/post.tsx`),
+            context: { id: node.id, },
         })
     })
-}
 
+}
