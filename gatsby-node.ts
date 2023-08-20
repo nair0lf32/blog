@@ -3,9 +3,9 @@ import type { GatsbyNode } from "gatsby";
 const path = require('path');
 
 export const createPages: GatsbyNode["createPages"] = async (
-    { graphql, actions, reporter }) => {
-    const { createPage } = actions;
-    const result = await graphql<any>(`
+  { graphql, actions, reporter }) => {
+  const { createPage } = actions;
+  const result = await graphql<any>(`
 query {
   allMdx {
     nodes {
@@ -22,18 +22,19 @@ query {
   }
 }
         `);
-    if (result.errors) {
-        reporter.panicOnBuild('Failed to create posts: ', result.errors);
-    }
+  if (result.errors) {
+    reporter.panicOnBuild('Failed to create posts: ', result.errors);
+  }
 
-    const posts = result.data.allMdx.nodes;
+  const posts = result.data.allMdx.nodes;
+  const postTemplate = path.resolve(`./src/templates/post.tsx`);
 
-    posts.forEach((node: any) => {
-        createPage({
-            path: `/posts/${node.frontmatter.slug}`,
-            component: path.resolve(`./src/templates/post.tsx`),
-            context: { id: node.id, },
-        })
+  posts.forEach((node: any) => {
+    createPage({
+      path: `/posts${node.frontmatter.slug}`,
+      component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+      context: { id: node.id, },
     })
+  })
 
 }
