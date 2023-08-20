@@ -1,4 +1,3 @@
-import { graphql } from "gatsby";
 import React from "react";
 
 //Styles
@@ -29,8 +28,8 @@ export const codeStyle = {
 /* Main layout */
 export default function Layout({ data, children }: any) {
     return (
-        <main style={pageStyle}>
+        <body style={pageStyle}>
             { children }
-        </main>
+        </body>
   )
 }
