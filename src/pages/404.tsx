@@ -10,7 +10,8 @@ const NotFoundPage: React.FC<PageProps> = () => {
       <h1 style={headingStyle}>Page not found</h1>
       <p style={paragraphStyle}>
         Yeah, you managed to get lost... <br/><br/>
-        It's all your fault and you should feel bad about it
+        It's all your fault and you should feel bad about it!
+        <br/><br/>
         <Link to="/">Go home, Now!</Link>.
       </p>
     </Layout>
