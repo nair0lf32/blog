@@ -1,6 +1,6 @@
-import { Link, graphql } from "gatsby"
-import React from "react"
-import Layout from "../components/layout"
+import { Link, graphql } from "gatsby";
+import React from "react";
+import Layout from "../components/layout";
 
 
 export const allPostsQuery = graphql`
@@ -23,17 +23,16 @@ const PostList = ({ data, children }: any) => {
         <Layout>
             <ul>
                 {data.allMdx.nodes.map((node: any) => (
-                    <li key={node.slug}>
+                
+                    <li key={node.frontmatter.slug}>
                     <div>
-                    	<div>
-                        <Link to={node.slug}>
+			<Link to={`/posts${node.frontmatter.slug}`}>
                         <h2>{node.frontmatter.title}</h2>
                         </Link>
-                        </div>
                         <p>{node.frontmatter.date}</p>
                         <p>{node.excerpt}</p>
                     </div>
-                    </li>
+                    </li> 
                 ))}
             </ul>
         </Layout>
