@@ -1,6 +1,6 @@
 import { Link, graphql } from "gatsby";
 import React from "react";
-import Layout from "../components/layout";
+import Layout, { headingStyle } from "../components/layout";
 
 
 export const allPostsQuery = graphql`
@@ -20,10 +20,10 @@ query {
 
 const PostList = ({ data, children }: any) => {
     return(
-        <Layout>
+      <Layout>
+        <h1 style={headingStyle}>All Blog Posts</h1>
             <ul>
                 {data.allMdx.nodes.map((node: any) => (
-                
                     <li key={node.frontmatter.slug}>
                     <div>
 			<Link to={`/posts${node.frontmatter.slug}`}>
