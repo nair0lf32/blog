@@ -2,8 +2,8 @@ import React from "react";
 
 //Styles
 export const pageStyle = {
-    margin: `3rem auto`, maxWidth: 650,
-    padding: `0 1rem`, fontFamily: `-apple-system, Roboto, sans-serif, serif`,
+    margin: `1.5rem auto`, maxWidth: 850,
+    padding: `0 0.5rem`, fontFamily: `-apple-system, Roboto, sans-serif, serif`,
     backgroundColor: `#f5f5f5`, color: `#232129`,
 }
 
@@ -14,7 +14,7 @@ export const headingStyle = {
 }
 
 export const paragraphStyle = {
-  marginBottom: 48,
+  marginBottom: 20,
 }
 
 export const codeStyle = {
