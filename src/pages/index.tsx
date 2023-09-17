@@ -41,8 +41,7 @@ export default function Home({data}: any) {
       </ul>
       
         <p style={paragraphStyle}>
-        And below is what I already started to write about:
-      </p>
+        And below is what I already started to write about:      </p>
 
       <ul>
       <li><a href="https://dev.nairolf32.com/zer0ne">zer0ne</a>: My Cybersecurity blog</li>
