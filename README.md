@@ -12,5 +12,5 @@ It's powered by [Gatsby](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_m
 
 ## 🚀 Deployment
 
-Deployed automatically on `gatsby cloud` and production can be accessed [here](blog.nairolf32.com)
+Deployed automatically on `netlify` (as `gatsby cloud` is now dead) and production can be accessed [here](blog.nairolf32.com)
 
