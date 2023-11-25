@@ -6,11 +6,11 @@ It's powered by [Gatsby](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_m
 
 ## Usage
 
-- After cloning this install deps with the usual `npm install`
+- After cloning this install all deps with the usual `npm install` command
 - Highly recommended to use Gatsby CLI. You can install it using `npm install -g gatsby-cli`
-- `gatsby develop` gives a preview server on `http://localhost:8000`
+- `gatsby develop` gives a preview server
 - To build use `gatsby build`
-- You can also just use npm to test and build
+- You can also just use npm commands directly to test and build
 
 ## 🚀 Deployment
 
