@@ -10,7 +10,6 @@ export const pageStyle = {
 export const headingStyle = {
   marginTop: 0,
   marginBottom: 64,
-  maxWidth: 320,
 }
 
 export const paragraphStyle = {
