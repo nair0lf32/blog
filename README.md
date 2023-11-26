@@ -16,4 +16,5 @@ It's powered by [Gatsby](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_m
 
 Deployed automatically on `netlify`  
 
-Production can be accessed [here](blog.nairolf32.com)
+- Dashboard is [here](https://app.netlify.com/sites/blog-n32/overview)
+- Production can be accessed [here](blog.nairolf32.com)
