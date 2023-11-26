@@ -4,35 +4,44 @@ date: 2023-10-13
 slug: /what-happens-when-you-google
 ---
 
+![firmbee-google](https://images.unsplash.com/photo-1616499370260-485b3e5ed653?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mnx8fGVufDB8fHx8fA%3D%3D)
+
 This question is a widely used interview question for many types of software engineering positions. It is used to assess a candidate’s general knowledge of how the web stack works on top of the internet.
 
-Let’s see what happens when you type https://www.google.com in your browser and press Enter. The answers to this question can be as detailed as possible but this post will mostly focus on the following aspects:
+Let’s see what happens when you type `https://www.google.com` in your browser and press `Enter`. The answers to this question can be as detailed as possible but this post will mostly focus on the following aspects:
 
-DNS request
-TCP/IP
-Firewall
-HTTPS/SSL
-Load-balancer
-Web server
-Application server
-Database
-The Process
-So let’s say you just opened your browser and typed https://www.gogle.com in the address bar. Let’s skip the keyboard actions and the multiple details of how your browser parses and validate the URL (Uniform Ressource Locator) you just submitted, and focus on the most important parts of the said URL:
+- DNS request
+- TCP/IP
+- Firewalls
+- HTTPS/SSL
+- Load Balancer
+- Web server
+- Application server
+- Database
 
+## The Process
 
-https:// Is the scheme. It defines the protocol used. Internet Protocols are a set of rules that governs the communication and exchange of data over the internet. There are many of them (TCP/IP for data packets, HTTP or HTTPS for hypertext, FTP or SFTP for files… )
-www.google.com Is the hostname, a label that is assigned to a device connected to a computer network and that is used to identify it. www refers to the world wide web network (the internet) and nowadays this part can easily be omitted. google.com is the domain name and the most important part of our URL.
-1- DNS Requests
-Well, your browser just parsed your URL and understood you wanted to access google. How did it know that? The domain name in your URL told it. A domain name is a string of text that maps to a numeric IP address, used to access a website from client software. In simpler words, a domain name is a text that a user types into a browser window to reach a particular website. For instance, the domain name for Google is google.com. The actual address of any website like Google is a complex numerical IP address (e.g. 142.250.200.78), but thanks to DNS, users are able to enter human-friendly domain names and be routed to the websites they are looking for. This process is known as a DNS lookup.
+So let’s say you just opened your browser and typed `https://www.gogle.com` in the address bar. Let’s skip the keyboard actions and the multiple details of how your browser parses and validate the [URL](https://en.wikipedia.org/wiki/URL) (Uniform Ressource Locator) you just submitted, and focus on the most important parts of the said URL:
 
-Domain names are typically broken up into two or three parts, each separated by a dot. When reading right-to-left, the identifiers in domain names go from most general to most specific. The section to the right of the last dot in a domain name is the top-level domain (TLD). These include the generic TLDs such as .com, .net, and .org, as well as country-specific TLDs like .bj and .fr .
+![url](https://miro.medium.com/v2/resize:fit:720/format:webp/1*kjYLopRBEYZ3AjaAHIY02A.png)
 
-To the left of the TLD is the second-level domain (2LD) and if there is anything to the left of the 2LD, it is called the third-level domain (3LD). For example, for Google’s US domain name, google.com , .com is the TLD and google the 2LD.
+- `https://` Is the scheme. It defines the **protocol** used. [Internet Protocols](https://en.wikipedia.org/wiki/Internet_Protocol) are a set of rules that governs the communication and exchange of data over the internet. There are many of them (TCP/IP for data packets, HTTP or HTTPS for hypertext, FTP or SFTP for files… )
+- `www.google.com` Is the **hostname**, a label that is assigned to a device connected to a [computer network](https://en.wikipedia.org/wiki/Computer_network) and that is used to identify it. `www` refers to the world wide web network (the internet) and nowadays this part can easily be omitted. `google.com` is the **domain** name and the most important part of our URL.
 
-The browser usually checks if the domain is in its cache (visited before). Because DNS is complex and needs to be fast, DNS data is cached at different layers between your browser and at various places across the Internet. Your browser checks its own cache, the operating system cache, or in the host file ( /etc/hosts for Linux and C:\windows\system32\drivers\etc\hosts for windows ), a local network cache at your router, and a DNS server cache on your corporate network or at your internet service provider (ISP). If the browser cannot find the IP address at any of those cache layers, the DNS server on your corporate network or at your ISP does a recursive DNS lookup. A recursive DNS lookup asks multiple DNS servers around the Internet, which in turn asks more DNS servers for the DNS record until it is found.
+## 1- DNS Requests
 
-Below is the result of a nslookup querying the A record of google.com
+Well, your browser just parsed your URL and understood you wanted to access google. How did it know that? The [domain name](https://en.wikipedia.org/wiki/Domain_name) in your URL told it. A domain name is a string of text that maps to a numeric [IP address](https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address/), used to access a website from client software. In simpler words,
+a domain name is a text that a user types into a browser window to reach a particular website. For instance, the domain name for Google is `google.com`. The actual address of any website like Google is a complex numerical IP address (e.g. 142.250.200.78), but thanks to [DNS](https://www.cloudflare.com/learning/dns/what-is-dns/), users are able to enter human-friendly domain names and be routed to the websites they are looking for. This process is known as a DNS lookup.
 
+Domain names are typically broken up into two or three parts, each separated by a dot. When reading right-to-left, the identifiers in domain names go from most general to most specific. The section to the right of the last dot in a domain name is the [top-level domain (TLD)](https://www.cloudflare.com/learning/dns/top-level-domain/). These include the generic TLDs such as `.com`, `.net`, and `.org`, as well as country-specific TLDs like `.bj` and `.fr` .
+
+To the left of the TLD is the second-level domain (2LD) and if there is anything to the left of the 2LD, it is called the third-level domain (3LD). For example, for Google’s US domain name, `google.com`, `.com` is the TLD and `google` the 2LD.
+
+The browser usually checks if the domain is in its cache (visited before). Because DNS is complex and needs to be fast, DNS data is cached at different layers between your browser and at various places across the Internet. Your browser checks its own cache, the operating system cache, or in the host file ( `/etc/hosts` for Linux and `C:\windows\system32\drivers\etc\hosts` for windows ), a local network cache at your router, and a DNS server cache on your corporate network or at your internet service provider (ISP). If the browser cannot find the IP address at any of those cache layers, the DNS server on your corporate network or at your ISP does a recursive DNS lookup. A recursive DNS lookup asks multiple DNS servers around the Internet, which in turn asks more DNS servers for the DNS record until it is found.
+
+Below is the result of a `nslookup` querying the A record of `google.com`
+
+```
 Server: 8.8.8.8
 Address: 8.8.8.8#53
 Non-authoritative answer:
@@ -48,47 +57,66 @@ Name: google.com
 Address: 173.194.74.113
 Name: google.com
 Address: 173.194.74.101
-Once the browser gets the DNS record with the IP address, it’s time for it to find the server on the Internet and establish a connection.
+```
 
-2-TCP/IP
-TCP/IP (Transmission Control Protocol/ Internet Protocol) is the set of communication protocols used on the Internet and similar computer networks. To avoid making this post too long we won’t go too deep in explaining what is the TCP/IP model. Let’s just say it is how our browser (the client) connects to Google’s server. First, need to establish a connection using a three-way handshake. Simply put, TCP breaks the data into small packets and forwards it toward the Internet Protocol (IP) layer. The packets are then sent to the destination server through different routes. The TCP layer in the user’s system waits for the transmission to get finished and acknowledges once all packets have been received. The connection can then be closed by either machine when they are done. Packets not received in a given amount of time are considered lost. Now the packets sent can go through filters like firewalls or hit a load balancer.
+Once the browser gets the DNS record with the IP address, it’s time for it to find the **server** on the Internet and establish a connection.
 
-3- Firewalls
-A firewall is a network security system that monitors and controls the incoming and outgoing network traffic based on predetermined security rules. A firewall typically establishes a barrier between a trusted network and an untrusted network, such as the Internet. A Firewall is a necessary part of any security architecture and takes the guesswork out of host-level protections and entrusts them to your network security device. Firewalls, and especially Next Generation Firewalls, focus on blocking malware and application-layer attacks, along with an integrated intrusion prevention system (IPS), the Next Generation Firewalls can react quickly and seamlessly to detect and react to outside attacks across the whole network. They can set policies to better defend your network and carry out quick assessments to detect invasive or suspicious activity, like malware, and shut it down
+## 2-TCP/IP
 
-4- HTTPS/SSL
-As we said earlier, in our URL the scheme was used to specify that we were using the HTTPS protocol, thus requesting a secure web page. HTTPS (Hypertext Transfer Protocol Secure) is a secure version of the HTTP protocol that uses the SSL/TLS protocol for encryption and authentication. HTTPS adds encryption, authentication, and integrity to the HTTP protocol. HTTPS appears in the URL when a website is secured by an SSL certificate.
+[TCP/IP](https://en.wikipedia.org/wiki/Internet_protocol_suite) (Transmission Control Protocol/ Internet Protocol) is the set of [communication protocols](https://en.wikipedia.org/wiki/Communication_protocol) used on the
+[Internet](https://en.wikipedia.org/wiki/Internet) and similar [computer networks](https://en.wikipedia.org/wiki/Computer_network). To avoid making this post too long we won’t go too deep in explaining what is the TCP/IP model.
+Let’s just say it is how our browser (the client) connects to Google’s server. First, need to establish a connection using a **three-way handshake**. Simply put, TCP breaks the data into small packets and forwards it toward the Internet Protocol (IP) layer. The packets are then sent to the destination server through different routes. The TCP layer in the user’s system waits for the transmission to get finished and acknowledges once all packets have been received. The connection can then be closed by either machine when they are done.
+Packets not received in a given amount of time are considered lost. Now the packets sent can go through filters like **firewalls** or hit a **load balancer**.
+
+## 3- Firewalls
+
+A firewall is a [network security](https://en.wikipedia.org/wiki/Network_security) system that monitors and controls the incoming and outgoing [network traffic](https://en.wikipedia.org/wiki/Network_traffic) based on predetermined security rules.
+A firewall typically establishes a barrier between a trusted network and an untrusted network, such as the [Internet](https://en.wikipedia.org/wiki/Internet). A Firewall is a necessary part of any security architecture and takes the guesswork out of host-level protections and entrusts them to your network security device. Firewalls, and especially Next Generation Firewalls, focus on blocking malware and application-layer attacks, along with an integrated intrusion prevention system (IPS), the Next Generation Firewalls can react quickly and seamlessly to detect and react to outside attacks across the whole network. They can set policies to better defend your network and carry out quick assessments to detect invasive or suspicious activity, like malware, and shut it down
+
+## 4- HTTPS/SSL
+
+As we said earlier, in our URL the scheme was used to specify that we were using the `HTTPS` protocol, thus requesting a secure web page. **HTTPS (Hypertext Transfer Protocol Secure)** is a secure version of the HTTP protocol that uses the [SSL/TLS protocol](https://www.ssl.com/faqs/faq-what-is-ssl/) for encryption and authentication. HTTPS adds **encryption**, **authentication**, and **integrity** to the HTTP protocol. HTTPS appears in the URL when a website is secured by an SSL certificate.
 
 An SSL certificate is a digital certificate that authenticates a website’s identity and enables an encrypted connection. SSL stands for Secure Sockets Layer, a security protocol that creates an encrypted link between a web server and a web browser.
 
-The secured pages are served through port 443 for HTTPS whereas HTTP use port 80. We can see below that google.com have a valid SSL certificate.
+The secured pages are served through port 443 for HTTPS whereas HTTP use port 80. We can see below that `google.com` have a valid SSL certificate.
 
-google ssl
-5- Load Balancer
-Modern high‑traffic websites like Google must serve hundreds of thousands, if not millions, of concurrent requests from users or clients and return the correct data in a fast and reliable manner. To cost‑effectively scale to meet these high volumes, modern computing best practice generally requires adding more servers. A load balancer acts as the “traffic cop” sitting in front of your servers and routing client requests across all servers capable of fulfilling those requests in a manner that maximizes speed and capacity utilization and ensures that no one server is overworked, which could degrade performance. If a single server goes down, the load balancer redirects traffic to the remaining online servers. When a new server is added to the server group, the load balancer automatically starts sending requests to it.
+![ssl](https://miro.medium.com/v2/resize:fit:640/format:webp/1*D01VBERZiqTL0F-ZQD8IKg.png)
 
-6- Web server
-But what is that “server” we are talking about? a server is a piece of computer hardware or software that provides functionality for other programs or devices, called clients.
+## 5- Load Balancer
 
-A web server is any software and underlying hardware that accepts requests via HTTP or HTTPS. A user agent, commonly a web browser or web crawler, initiates communication by making a request for a web page or other resource using HTTP, and the server responds with the content of that resource or an error message. A web server can also accept and store resources sent from the user agent if configured to do so.
+Modern high‑traffic websites like Google must serve hundreds of thousands, if not millions, of concurrent requests from users or clients and return the correct data in a fast and reliable manner.
+To cost‑effectively scale to meet these high volumes, modern computing best practice generally requires adding more servers. A **[load balancer](https://www.nginx.com/solutions/adc)** acts as the “traffic cop” sitting in front of your servers and routing client requests across all servers capable of fulfilling those requests in a manner that maximizes speed and capacity utilization and ensures that no one server is overworked, which could degrade performance. If a single server goes down, the load balancer redirects traffic to the remaining online servers. When a new server is added to the server group, the load balancer automatically starts sending requests to it.
 
-The web server usually communicates with the application server that hosts the web files we requested
+## 6- Web server
 
-7- Application server
+But what is that “server” we are talking about? a **server** is a piece of computer hardware or software that provides functionality for other programs or devices, called clients.
+
+A **web server** is any software and underlying hardware that accepts requests via HTTP or HTTPS. A user agent,
+commonly a [web browser](https://en.wikipedia.org/wiki/Web_browser) or [web crawler](https://en.wikipedia.org/wiki/Web_crawler), initiates communication by making a request for a [web page](https://en.wikipedia.org/wiki/Web_page)
+or other [resource](https://en.wikipedia.org/wiki/Web_Resource) using HTTP, and the [server](<https://en.wikipedia.org/wiki/Server_(computing)>) responds with the content of that resource or an [error message](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
+A web server can also accept and store resources sent from the user agent if configured to do so.
+
+The web server usually communicates with the **application server** that hosts the web files we requested
+
+## 7- Application server
+
 An application server is a server that hosts applications or software that delivers a business application through a communication protocol.
 
 An application server framework is a service layer model. It includes software components available to a software developer through an application programming interface. An application server may have features such as clustering, fail-over, and load-balancing. The goal is for developers to focus on business logic.
 
 The application server is very often connected to a database that stores the data we send or can retrieve the data we query
 
-8- Database
+## 8- Database
+
 A database is an organized collection of data stored and accessed electronically. Small databases can be stored on a file system, while large databases are hosted on computer clusters or cloud storage. The design of databases spans formal techniques and practical considerations, including data modeling, efficient data representation and storage, query languages, security and privacy of sensitive data, and distributed computing issues, including supporting concurrent access and fault tolerance.
 
 A database management system (DBMS) is software that interacts with end users, applications, and the database itself to capture and analyze the data. The DBMS software additionally encompasses the core facilities provided to administer the database. The sum total of the database, the DBMS, and the associated applications can be referred to as a database system. Often the term “database” is also used loosely to refer to any of the DBMS, the database system, or an application associated with the database.
 
 Computer scientists may classify database management systems according to the database models that they support. Relational databases became dominant in the 1980s. These model data as rows and columns in a series of tables, and the vast majority use SQL for writing and querying data. In the 2000s, non-relational databases became popular, collectively referred to as NoSQL, because they use different query languages.
 
-The response
+## The response
+
 Finally, in the response message body, is the google website home page we requested. It’s made of HTML, CSS and possibly Javascript, which is once again interpreted by our browser to render the pretty page we see.
 
 In summary
@@ -99,9 +127,14 @@ A TCP connection is established and our packets go through firewalls and hit the
 The load balancer chooses one of many servers Google uses to handle our HTTPS request
 The chosen server fetches through his web server, application server, or databases to retrieve the HTML file corresponding to the google website home page. Here is what our GET request looks like
 
+![request](https://miro.medium.com/v2/resize:fit:720/format:webp/1*GKAX5kdqGljdCD4LSb-OWA.png)
+
 And here is the response from the server
 
-response from google
+![request](https://miro.medium.com/v2/resize:fit:720/format:webp/1*NUkwGockLp_zTPvk6gRozg.png)
+
 The response comes back to our browser, which translates the source code and renders the page
-Google.com
+
+![response](https://miro.medium.com/v2/resize:fit:720/format:webp/1*qjeNKTgNObaCIaAqbLru-A.png)
+
 All that happens blazingly fast (milliseconds, usually less than one second, depending on the network performance)
