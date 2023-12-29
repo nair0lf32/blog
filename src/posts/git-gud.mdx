@@ -1,0 +1,163 @@
+---
+title: Git Gud
+date: 2023-12-28
+slug: /git-gud
+---
+
+We all know that git is unavoidable in the world of modern software development (YES we do!)
+and often am I asked how to get started with it. Well...who actually knows?
+git can get as complicated as you want it to be, But it also can be very simple if you just want
+to get stuff done. There are a lot of tutorials already and I am too lazy to reinvent anything (RTFM).
+
+What I want to do here is to give you a quick overview of the most important commands and concepts
+(like, real quick) and then point you to some resources that I found helpful. We will do this in a
+tutorial (-ish) style (I don't usually do that) so you can follow along if you want to.
+
+## The context
+
+You are hired as a software developer at a company that uses git for version control but you just left
+that cave you were living in for the last 10 years and have no idea what git is.
+You are a bit scared because you need that job to sustain your home-made bitcoin mining rig and your
+collection of 90s anime figurines. Also you use windows even though the process
+is almost the same on linux and you are not rich enough to own a Mac. But don't worry, I got you.
+
+First we do some reading so we do what every good developer does and google "git tutorial".
+One of the top results is [from here](https://git-scm.com/). which is good because
+it is the official documentation (RTFM). It's also where you can
+[download git for your OS](https://git-scm.com/downloads).
+
+While it's downloading we sum up what we know so far:
+Basically git is a tool that helps us to keep track of changes in our code (oversimplified).
+It does this by creating a history of changes (commits) and storing them in a tree-like structure
+(branching). It also allows us to work on different versions of our code at the same time (merging).
+We can also share our code with others (remotes) and work on it together (pulling and pushing).
+That's it. We are done with the minimum of theory required.
+
+## Git started
+
+Now that git is installed and [correctly set up](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
+you started to work on your first task.
+Create a new folder and name it "git-gud". Open a terminal in that folder. If you don't know what a terminal
+is, well....google it. Now type `git init` and hit enter. You just created a git repository.
+
+Git creates a hidden folder called ".git" in your current directory.
+This is where all the magic happens and you don't have to worry about that folder.
+Just remember that deleting it will delete your local repository.
+
+Now create a file called "README.md" and write something (anything) in it. Save it.
+As we just created a new file we have to tell git that we want to track the changes we make on it.
+We do this by adding it to the staging area. Type `git add README.md` and hit enter.
+
+You can check the status of your repository by typing `git status` and hitting enter.
+It shows you all the tracked and untracked files and the current branch you are on
+(don't worry about branches for now).
+
+Now we want to save our changes. We do this by creating a commit. you will do that a lot.
+Type `git commit -m "my first commit"` and hit enter. You just created your first commit.
+The `-m` flag is used to add a message to your commit. It is required and you should always
+add a meaningful message to your commits. It will help you and others to understand what
+changes you made (no for real, write good commit messages). You can check things again with `git status`.
+To see all your commits type `git log`.
+
+Now you are a master of local git repositories.
+You can create, add, commit and check the status of your repository.
+
+## Sharing is caring
+
+Your boss wants to see what you did so far and you can't send him your computer.
+He said "just send me the github link". Your boss just assumed that you already have a github account.
+No need to tell you to google what github is, right?
+So now you know it is a platform to share your code with others and collaborate on it.
+You are done with the hassle of backing up your code on a usb stick or on a cloud drive.
+Also you already [created an account](https://github.com/join)
+and [set up git](https://docs.github.com/en/github/getting-started-with-github/set-up-git) (RTFM).
+
+Now you want to push your code to github. First you have to create a repository on github (yes
+another one). You can do this by clicking on the plus sign in the top right corner and then follow
+the instructions. usually you want to give it the same name as your local repository (git-gud) and
+make it public so your boss (and the whole world) can see it. After creating your remote repository
+with no files in it github explains many ways to add files to it.
+
+We will use the one that says "push an existing repository from the command line". So once again follow
+the instructions. You will have to type `git remote add origin <url>` in your terminal and hit enter.
+The url is the one you get from github when you create a repository. The scheme is basically
+`https://github.com/<username>/<repository-name>.git`.
+
+`git branch -M main` is used to rename the default branch from "master" to "main" (because reasons).
+
+Now type `git push -u origin main` and hit enter. You just pushed your code to github.
+Refresh the page and you should see your code there. just like that you can share your code with others.
+Everytime you make changes to that readme file, commit the changes and push the commit using
+`git push`. (Go ahead and try it)
+
+You can also check the status of your remote repository by typing `git remote -v`. There you can see a
+new word "fetch". It is used to get the changes from the remote repository to your local repository.
+Let's say your boss made some changes to the readme file from his own computer (don't worry about how for now)
+and now he pushed those changes to the remote repository. You want to get those changes locally.
+You do this by typing `git fetch` and hitting enter to check if there are any changes.
+Then you type `git pull` and hit enter to get those changes.
+Now you can see the changes by typing `git log`.
+
+To simulate this you can go to your github repository and edit the readme file from the browser.
+Then commit the changes and push them to the remote repository. Now you can fetch the changes locally
+from your terminal typing `git fetch` and hitting enter. You can see the changes by typing `git log`.
+Then you can pull the changes by typing `git pull` and hitting enter. Check the readme file
+and you can witness the magic.
+
+Now you unlocked the power of git and github. You can create, add, commit, push and check the status
+of your local and remote repositories, also fetch and pull changes from the remote repository.
+
+## The incident
+
+Your boss didn't fire you yet even though it took you 3 days to write two lines
+to a readme file. He want you to add a new file called "newbs.md" to your repository.
+But yesterday you were drunk and you deleted the whole repository from your computer.
+C'mon get in the context and delete the repository from your computer (yes the whole git-gud folder.
+Also being drunk is not mandatory).
+
+Now you can just clone the repository from github to your computer. That's how cool github is.
+Type `git clone <url>` in a terminal wherever you want to keep your repository and hit enter.
+The url is the same as before. You can find it on the github page of your remote repository.
+You can also do it from the browser by clicking on the green "code" button and follow instructions.
+
+Anyway, now you have your repository back on your computer. You can check the status by typing `git status`.
+Now proceed to create the "newbs.md" file and add it to the staging area. Then commit the changes.
+Then push the changes to the remote repository. You can check the status of your remote repository
+to make sure the changes are there.
+
+## Next steps
+
+If you successfully followed along you should now have a basic understanding of git and github.
+But wait, there is more. You can do a lot more with git. We just scratched the surface.
+We didn't even talk about
+[branching](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell),
+[pull requests](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests),
+and [merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging), which are vital for
+safe and efficient collaboration. Whenever your boss decide to hire more people this will come handy.
+Also we didn't talk about [gitignore](https://git-scm.com/docs/gitignore) which prevent your drunk
+self from pushing your bitcoin wallet to github. And we didn't talk about
+[rebase](https://git-scm.com/docs/git-rebase) which is a very powerful tool to keep your commit history clean and readable.
+Also [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules), [stashing](https://git-scm.com/docs/git-stash),
+[resetting](https://git-scm.com/docs/git-reset) and [reverting](https://git-scm.com/docs/git-revert) your mistakes,
+[cherry-picking](https://git-scm.com/docs/git-cherry-pick), [reflog](https://git-scm.com/docs/git-reflog), [bisect](https://git-scm.com/docs/git-bisect),
+and [blame](https://git-scm.com/docs/git-blame) to find out who is pushing bad code to your repository,
+Also [hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) which are used to automate things...
+
+Just [RTFM](https://git-scm.com/docs)!!
+
+## Final words
+
+I hope this was helpful. I tried to keep it simple and short.
+This article is not meant to be a complete guide to git.
+It is just a quick overview of the most important commands and concepts for the 2 or 3 people who
+asked me how to get started with git. I hope you enjoyed it.
+
+The actual repository I created while writing this article can be found on my github
+[here](https://github.com/nair0lf32/git-gud). If you have any questions or suggestions
+`open an issue` on this very same repository. I will try to answer them as soon as possible.
+Also if you got gud enough at git and github and want to make your "first pull request"
+you can do it on this repository. Just open a `pull request` that adds your github
+username and link to "newbs.md" and I will be happy to merge it. Just see how I did it and add yours
+to the bottom of the list.
+
+Remember that the only way to actually git gud is to keep trying and learning.
