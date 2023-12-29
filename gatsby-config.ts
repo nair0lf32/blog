@@ -2,41 +2,51 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Blog`,
-    siteUrl: `https://blog.nairolf32.com`,
+    title: "Blog",
+    siteUrl: "https://blog.nairolf32.com",
     description: "A muthafuckin' blog",
     author: "nairolf32",
   },
 
   graphqlTypegen: true,
-  plugins: ["gatsby-plugin-image", "gatsby-plugin-sitemap", {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "src/images/icon.png"
-    }
-  }, "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
-      resolve: 'gatsby-source-filesystem',
+
+  plugins: [
+    "gatsby-plugin-image",
+    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-manifest",
       options: {
-        "name": "images",
-        "path": "./src/images/"
+        icon: "src/images/icon.png",
       },
-      __key: "images"
-    }, {
-      resolve: 'gatsby-source-filesystem',
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
       options: {
-        "name": "pages",
-        "path": "./src/pages/"
+        name: "images",
+        path: `${__dirname}/src/images/`,
       },
-      __key: "pages"
+      __key: "images",
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        "name": "posts",
-        "path": "./src/posts/"
+        name: "pages",
+        path: `${__dirname}/src/pages/`,
       },
-      __key: "posts"
-    }]
+      __key: "pages",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "posts",
+        path: `${__dirname}/src/posts/`,
+      },
+      __key: "posts",
+    },
+    "gatsby-plugin-mdx",
+  ],
 };
 
 export default config;
