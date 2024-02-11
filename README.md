@@ -2,7 +2,7 @@
 
 My muthafuckin' blog
 
-It's powered by [Gatsby](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts) so you know it's magnificient
+It's powered by [Gatsby](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts) so you know it's **great**
 
 ## Usage
 
