@@ -12,6 +12,11 @@ const PostTemplate = ({ data, children }: any) => {
       <MDXProvider components={{ ...shortcodes,}}>
         {children}
       </MDXProvider>
+      <footer>
+        <p><a href="https://github.com/nair0lf32">nairolf32</a> &copy; 2024 |
+          {data.mdx.frontmatter.date} | <Link to="/">Go Home</Link> | <Link to="/posts">Read more</Link>
+        </p>
+      </footer>
     </Layout>
   );
 };

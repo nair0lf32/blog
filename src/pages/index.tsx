@@ -1,5 +1,5 @@
 import React from "react";
-import Layout, { buttonStyle, headingStyle, paragraphStyle } from "../components/layout";
+import Layout, { headingStyle, paragraphStyle } from "../components/layout";
 import { Link, graphql } from "gatsby";
 
 
@@ -57,7 +57,7 @@ export default function Home({data}: any) {
       <p style={{color: "darkblue", fontWeight: "bold"}}>
       All posts/articles can be found <Link to={'/posts'}>here</Link>!
       </p>
-
+      <p><a href="https://github.com/nair0lf32">nairolf32</a> &copy; 2024</p>
     </Layout>
   )
 }
