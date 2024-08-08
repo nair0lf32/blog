@@ -36,7 +36,7 @@ export default function Home({data}: any) {
         <li><a href="https://nairolf32.hashnode.dev/">hashnode</a></li>
 	<li><a href="https://hackernoon.com/u/nairolf32">hackernoon</a></li>
 	<li><a href="https://dev.to/nair0lf32">dev.to</a></li>
-	<li><a href="https://florianedemessi.wordpress.com">wordpress</a></li>
+	<li><a href="https://florianedemessi.wordpress.com">WordPress</a></li>
       </ul>
         <p style={paragraphStyle}>
         And below is what I already started to write about:  </p>
@@ -53,6 +53,8 @@ export default function Home({data}: any) {
         suggestions or if you find any mistakes. Also I am a somewhat busy guy so never expect consistency
         in my writing schedule (this is a freestyle! kek). I write how I feel and when I feel like it.
       </p>
+
+      <img src="/images/blog-logo.png" alt="logo" />
 
       <p style={{color: "darkblue", fontWeight: "bold"}}>
       All posts/articles can be found <Link to={'/posts'}>here</Link>!
